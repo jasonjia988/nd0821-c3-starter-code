@@ -1,0 +1,39 @@
+name: CI (flake8 + pytest)
+
+on: [push]
+
+jobs:
+  build:
+    name: Test on Python 3.8
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1) Get your code on the runner
+      - uses: actions/checkout@v3
+
+      # 2) Install Python 3.8 (same as development)
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.8"
+
+      # 3) Install dependencies
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install flake8 pytest
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+      # 4) Lint with flake8 (fail on style errors)
+      - name: Lint with flake8
+        run: |
+          # show versions for debugging
+          python --version
+          flake8 --version
+          # run flake8 across the repo
+          flake8 .
+
+      # 5) Run tests with pytest (fail on test errors)
+      - name: Test with pytest
+        run: |
+          pytest -q
