@@ -1,11 +1,10 @@
 import os
-import sys
 import pickle
 import pandas as pd
 import pytest
 from sklearn.model_selection import train_test_split
 from starter.ml.data import process_data
-from starter.ml.model import inference, train_model
+from starter.ml.model import train_model
 
 file_dir = os.path.dirname(__file__)
 
@@ -27,6 +26,7 @@ def data():
     data_path = os.path.join(file_dir, "data/cleaned_census.csv")
     return pd.read_csv(data_path)
 
+
 @pytest.fixture(scope="module")
 def cat_features():
     """
@@ -44,6 +44,7 @@ def cat_features():
     ]
 
     return cat_features
+
 
 @pytest.fixture(scope="module")
 def train_dataset(data, cat_features):
@@ -70,9 +71,9 @@ def test_train_model_returns_estimator(train_dataset):
 
 def test_is_model_fitted(train_dataset):
 
-    X_train, _=train_dataset
-    model_path=os.path.join(file_dir,"model/model.pkl")
-    model=pickle.load(open(model_path, 'rb'))
+    X_train, _ = train_dataset
+    model_path = os.path.join(file_dir, "model/model.pkl")
+    model = pickle.load(open(model_path, 'rb'))
 
     try:
         model.predict(X_train)
