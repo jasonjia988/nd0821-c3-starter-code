@@ -7,7 +7,6 @@ from slice import slice_func
 import pandas as pd
 import pickle
 import os
-import sys
 
 from sklearn.model_selection import train_test_split
 

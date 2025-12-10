@@ -60,4 +60,3 @@ def test_inference_invalid_type():
     body = response.json()
     # "age" should appear in error location
     assert any("age" in str(err["loc"]) for err in body["detail"])
-    

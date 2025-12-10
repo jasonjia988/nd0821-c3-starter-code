@@ -32,7 +32,7 @@ def cat_features():
     """
     Extract categorical features
     """
-    cat_features=[
+    cat_features = [
         "workclass",
         "education",
         "marital-status",
@@ -95,4 +95,3 @@ def test_process_data_training(data, cat_features):
     # encoder and label binarizer are returned
     assert encoder is not None
     assert lb is not None
-    

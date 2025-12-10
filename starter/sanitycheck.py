@@ -88,7 +88,7 @@ def run_sanity_check(test_dir):
             if source.find('.status_code') != -1:
                 TEST_FOR_POST_METHOD_RESPONSE_CODE = True
             if (source.find('.json') != -1) or (source.find('json.loads') != -1):
-                TEST_FOR_POST_METHOD_RESPONSE_BODY =  True
+                TEST_FOR_POST_METHOD_RESPONSE_BODY = True
                 COUNT_POST_METHOD_TEST_FOR_INFERENCE_RESULT += 1
 
         if not TEST_FOR_POST_METHOD_RESPONSE_CODE:
@@ -118,10 +118,9 @@ def run_sanity_check(test_dir):
     print(WARN_COLOR+"This is a heuristic based sanity testing and cannot guarantee the correctness of your code.")
     print(WARN_COLOR+"You should still check your work against the rubric to ensure you meet the criteria.")
 
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('test_dir', metavar='test_dir', nargs='?', default='tests', help='Name of the directory that has test files.')
     args = parser.parse_args()
     run_sanity_check(args.test_dir)
-
-
