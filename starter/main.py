@@ -20,6 +20,7 @@ encoder = pickle.load(open(encoder_path, 'rb'))
 lb_path = os.path.join(file_dir, 'model/label_binarizer.pkl')
 lb = pickle.load(open(lb_path, 'rb'))
 
+
 class Attributes(BaseModel):
     age: int = Field(None, example=39)
     workclass: str = Field(None, example='State-gov')
@@ -42,11 +43,13 @@ app = FastAPI()
 
 # Define a GET on the specified endpoint.
 
+
 @app.get("/")
 async def say_hello():
     return "Weclome to use this API!"
 
 # Use POST action to send data to the server
+
 
 @app.post("/inference")
 async def predict(sample: Attributes):

@@ -9,6 +9,7 @@ from starter.ml.model import inference, train_model
 
 file_dir = os.path.dirname(__file__)
 
+
 @pytest.fixture(scope="module")
 def path():
     """
