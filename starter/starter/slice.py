@@ -32,7 +32,7 @@ def slice_func(
     """
 
     X, y, encoder, lb = process_data(
-        data, categorical_features=categorical_features, label="salary", 
+        data, categorical_features=categorical_features, label="salary",
         training=False, encoder=encoder, lb=lb)
     preds = inference(model, X)
 
