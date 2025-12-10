@@ -1,8 +1,3 @@
-import os
-import pickle
-from pathlib import Path
-import pandas as pd
-
 from ml.data import process_data
 from ml.model import compute_model_metrics, inference
 
@@ -37,14 +32,15 @@ def slice_func(
     """
 
     X, y, encoder, lb = process_data(
-        data, categorical_features=categorical_features, label="salary", training=False, encoder=encoder, lb=lb)
+        data, categorical_features=categorical_features, label="salary", 
+        training=False, encoder=encoder, lb=lb)
     preds = inference(model, X)
 
     with open('slice_output.txt', 'w') as f:
         for slice_value in data[slice_feature].unique():
 
             slice_index = data.index[data[slice_feature] == slice_value]
-            
+
             f.write(str(slice_feature)+' = '+str(slice_value)+'\n')
 
             f.write('precision: {}, recall: {}, fbeta: {}\n'.format(

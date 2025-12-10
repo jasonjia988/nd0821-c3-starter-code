@@ -94,3 +94,4 @@ def test_process_data_training(data, cat_features):
     # encoder and label binarizer are returned
     assert encoder is not None
     assert lb is not None
+    
